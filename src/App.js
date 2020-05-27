@@ -3,12 +3,22 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Form from "./components/Form";
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: #1a2841;
+  }
+`;
 
 function App() {
   return (
-    <Router>
-      <Route exact path="/form" component={Form} />
-    </Router>
+    <>
+      <Router>
+        <GlobalStyle />
+        <Route exact path="/" component={Form} />
+      </Router>
+    </>
   );
 }
 

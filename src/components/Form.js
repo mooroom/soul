@@ -3,10 +3,11 @@ import AccountSetup from "./AccountSetup";
 import SocialProfiles from "./SocialProfiles";
 import Confirm from "./Confirm";
 import Success from "./Success";
+import Start from "./Start";
 
 export class Form extends Component {
   state = {
-    step: 1,
+    step: 0,
     name: "",
     email: "",
     phone: "",
@@ -46,6 +47,8 @@ export class Form extends Component {
     const values = { name, email, phone, password, facebook, twitter, github };
 
     switch (step) {
+      case 0:
+        return <Start />;
       case 1:
         return (
           <AccountSetup
