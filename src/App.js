@@ -1,9 +1,11 @@
 import React from "react";
 // import logo from './logo.svg';
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Form from "./components/Form";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
+import Start from "./components/Start";
+import Welcome from "./components/Welcome";
+import Test from "./components/Test";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -17,7 +19,11 @@ function App() {
     <>
       <Router>
         <GlobalStyle />
-        <Route exact path="/" component={Form} />
+        <Switch>
+          <Route exact path="/" component={Start} />
+          <Route exact path="/welcome" component={Welcome} />
+          <Route exact path="/test" component={Test} />
+        </Switch>
       </Router>
     </>
   );

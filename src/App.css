@@ -28,6 +28,24 @@
   box-shadow: 0 15px 16px 0.17px rgba(0, 0, 0, 0.05);
 }
 
-h1 {
+/* h1 {
   text-align: center;
+} */
+
+.btn-white {
+  background: white;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 0 30px;
+}
+
+.purple {
+  background: #5a4d8a;
 }

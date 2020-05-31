@@ -48,7 +48,7 @@ export class Form extends Component {
 
     switch (step) {
       case 0:
-        return <Start />;
+        return <Start nextStep={this.nextStep} />;
       case 1:
         return (
           <AccountSetup
@@ -76,6 +76,8 @@ export class Form extends Component {
         );
       case 4:
         return <Success />;
+      default:
+        return;
     }
   }
 }

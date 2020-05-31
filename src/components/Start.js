@@ -1,23 +1,22 @@
 import React from "react";
-import styled from "styled-components";
-
-const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-`;
+import logo from "../img/logo.png";
+import { Link } from "react-router-dom";
 
 const Start = () => {
   return (
-    <Container>
-      <h1>soul</h1>
-      <button type="button" className="btn btn-primary">
-        Start
-      </button>
-    </Container>
+    <div className="container">
+      <img
+        src={logo}
+        width="77"
+        alt="logo"
+        style={{ "margin-bottom": "142px" }}
+      />
+      <Link to="/welcome">
+        <button type="button" className="btn btn-light">
+          시작하기
+        </button>
+      </Link>
+    </div>
   );
 };
 
