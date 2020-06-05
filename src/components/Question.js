@@ -9,8 +9,8 @@ const Question = ({ question }) => {
           class="form-check-input"
           type="checkbox"
           id="inlineCheckbox1"
-          value={checkedVal}
-          onChange={onChange}
+          //value={checkedVal}
+          //onChange={onChange}
         />
         <label class="form-check-label" for="inlineCheckbox1">
           1
@@ -20,7 +20,7 @@ const Question = ({ question }) => {
         type="button"
         className="btn purple d-block m-auto"
         style={{ color: "white" }}
-        onClick={nextStep}
+        //onClick={nextStep}
       >
         다음으로
       </button>
