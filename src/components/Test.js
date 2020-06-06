@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import shapes from "../img/shapes.png";
 import style from "styled-components";
 import Question from "./Question";
@@ -15,6 +15,9 @@ const Test = () => {
   const [step, setStep] = useState({
     step: 1,
   });
+
+  const currentStep = useRef(1);
+  const checkedValueSum = useRef([]);
 
   const [questions, setQuestions] = useState([
     {
@@ -103,7 +106,17 @@ const Test = () => {
 
   const nextStep = () => {
     setStep({ step: step.step + 1 });
-    console.log(step);
+    currentStep.current += 1;
+    for (let i = 0; i < questions.length; i++) {
+      if (questions[i].id === currentStep.current) {
+        questions[i].render = true;
+      } else {
+        questions[i].render = false;
+      }
+    }
+    console.log(currentStep.current);
+    checkedValueSum.current.push(questions[currentStep.current - 1].id);
+    console.log(checkedValueSum);
   };
 
   return (
