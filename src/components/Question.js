@@ -58,7 +58,7 @@ const Question = ({ question, step, handleCheckedVal, render, nextStep }) => {
           style={{ color: "white" }}
           onClick={() => {
             nextStep();
-            handleCheckedVal(step, selected);
+            handleCheckedVal(step, 1);
           }}
         >
           다음으로

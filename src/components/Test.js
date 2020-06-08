@@ -12,11 +12,7 @@ const TestCard = style.div`
 `;
 
 const Test = () => {
-  const [step, setStep] = useState({
-    step: 1,
-  });
-
-  const currentStep = useRef(1);
+  const step = useRef(1);
   const checkedValueSum = useRef([]);
 
   const [types, setTypes] = useState({
@@ -113,17 +109,16 @@ const Test = () => {
   };
 
   const nextStep = () => {
-    setStep({ step: step.step + 1 });
-    currentStep.current += 1;
+    step.current += 1;
     for (let i = 0; i < questions.length; i++) {
-      if (questions[i].id === currentStep.current) {
+      if (questions[i].id === step.current) {
         questions[i].render = true;
       } else {
         questions[i].render = false;
       }
     }
     //console.log(currentStep.current);
-    checkedValueSum.current.push(questions[currentStep.current - 1].id);
+    //checkedValueSum.current.push(questions[currentStep.current - 1].id);
   };
 
   return (
@@ -135,13 +130,13 @@ const Test = () => {
         style={{ marginBottom: "75px" }}
       />
       <TestCard>
-        <small>{step.step} / 12</small>
+        <small>{step.current} / 12</small>
 
         {questions.map((question) => (
           <Question
             question={question}
             key={question.id}
-            step={step.step}
+            step={step.current}
             handleCheckedVal={handleCheckedVal}
             render={question.render}
             nextStep={nextStep}
