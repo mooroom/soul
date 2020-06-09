@@ -4,12 +4,11 @@ const Option = ({ option, handleChecked }) => {
   return (
     <div className="form-check form-check-inline">
       <input
-        className="form-check-input"
         type="checkbox"
-        id={option.id}
-        checked={option.isChecked}
+        key={option.id}
         value={option.value}
         onChange={() => handleChecked(option.id)}
+        checked={option.isChecked}
       />
       <label className="form-check-label" htmlFor={option.id}>
         {option.value}
