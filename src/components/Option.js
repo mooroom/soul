@@ -1,6 +1,6 @@
 import React from "react";
 
-const Option = ({ option, handleChecked }) => {
+const Option = ({ inputChange, option }) => {
   return (
     <div className="form-check form-check-inline">
       <input
@@ -8,7 +8,7 @@ const Option = ({ option, handleChecked }) => {
         type="checkbox"
         key={option.id}
         value={option.value}
-        onChange={() => handleChecked(option.id)}
+        onChange={inputChange}
         defaultChecked={option.isChecked}
       />
       <label className="form-check-label" htmlFor={option.id}>
