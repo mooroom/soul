@@ -1,18 +1,18 @@
 import React from "react";
 
-const Option = ({ inputChange, option }) => {
+const Option = ({ qid, id, value, inputChange }) => {
   return (
     <div className="form-check form-check-inline">
       <input
         className="form-check-input"
         type="checkbox"
-        key={option.id}
-        value={option.value}
-        onChange={inputChange}
-        defaultChecked={option.isChecked}
+        id={id}
+        value={value}
+        onClick={inputChange}
+        name={qid}
       />
-      <label className="form-check-label" htmlFor={option.id}>
-        {option.value}
+      <label className="form-check-label" htmlFor={id}>
+        {value}
       </label>
     </div>
   );

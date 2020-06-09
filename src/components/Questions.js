@@ -85,11 +85,11 @@ const Questions = () => {
   };
 
   const inputChange = (e) => {
-    console.log(e.target.id);
-    console.log(e.target.value);
+    let eTargetName = parseInt(e.target.name, 10);
     let qts = questions;
+
     qts.forEach((qt) => {
-      if (qt.id === e.target.id) {
+      if (qt.id === eTargetName) {
         qt.checkedVal = e.target.value;
         console.log(qt.checkedVal);
       } else {
@@ -97,14 +97,7 @@ const Questions = () => {
       }
     });
     setQuestions(qts);
-
-    // setQuestions(
-    //   questions.map((question) =>
-    //     question.id === e.target.id
-    //       ? { ...question, checkedVal: e.target.value }
-    //       : question
-    //   )
-    // );
+    console.log(questions);
   };
 
   switch (step) {
