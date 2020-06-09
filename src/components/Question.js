@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import Option from "./Option";
 
@@ -21,9 +22,14 @@ const Question = ({ question, step, render, nextStep }) => {
 
     console.log(options);
   };
+=======
+import React from "react";
+>>>>>>> parent of 5e60224... 0605 imac
 
+const Question = ({ question }) => {
   return (
     <div>
+<<<<<<< HEAD
       {render ? <p>{question.title}</p> : null}
 
       {render
@@ -48,6 +54,29 @@ const Question = ({ question, step, render, nextStep }) => {
           다음으로
         </button>
       ) : null}
+=======
+      <p>{question.id}</p>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox1"
+          //value={checkedVal}
+          //onChange={onChange}
+        />
+        <label class="form-check-label" for="inlineCheckbox1">
+          1
+        </label>
+      </div>
+      <button
+        type="button"
+        className="btn purple d-block m-auto"
+        style={{ color: "white" }}
+        //onClick={nextStep}
+      >
+        다음으로
+      </button>
+>>>>>>> parent of 5e60224... 0605 imac
     </div>
   );
 };
