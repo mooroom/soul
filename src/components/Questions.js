@@ -11,6 +11,7 @@ import Q9 from "./Q9";
 import Q10 from "./Q10";
 import Q11 from "./Q11";
 import Q12 from "./Q12";
+import Result from "./Result";
 
 const Questions = () => {
   const [step, setStep] = useState(1);
@@ -102,7 +103,34 @@ const Questions = () => {
   };
 
   const finishStep = () => {
-    //let sumA = questions[0].checkedVal
+    setStep(step + 1);
+    let checkedArray = [];
+    questions.forEach((question) =>
+      checkedArray.push(parseInt(question.checkedVal, 10))
+    );
+    //console.log(checkedArray);
+    let sumA = 0;
+    let sumB = 0;
+    let sumC = 0;
+    let sumD = 0;
+
+    for (let i = 0; i < 3; i++) {
+      sumA += checkedArray[i];
+    }
+    for (let i = 3; i < 6; i++) {
+      sumB += checkedArray[i];
+    }
+    for (let i = 6; i < 9; i++) {
+      sumC += checkedArray[i];
+    }
+    for (let i = 9; i < 12; i++) {
+      sumD += checkedArray[i];
+    }
+
+    console.log(sumA);
+    console.log(sumB);
+    console.log(sumC);
+    console.log(sumD);
   };
 
   const inputChange = (e) => {
@@ -112,9 +140,9 @@ const Questions = () => {
     qts.forEach((qt) => {
       if (qt.id === eTargetName) {
         qt.checkedVal = e.target.value;
-        console.log(qt.checkedVal);
+        //console.log(qt.checkedVal);
       } else {
-        console.log("fuck");
+        //console.log("fuck");
       }
     });
     setQuestions(qts);
@@ -230,6 +258,8 @@ const Questions = () => {
           inputChange={inputChange}
         />
       );
+    case 13:
+      return <Result />;
     default:
       return;
   }
