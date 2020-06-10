@@ -1,9 +1,26 @@
 import React, { useState, useRef } from "react";
 import Q1 from "./Q1";
 import Q2 from "./Q2";
+import Q3 from "./Q3";
+import Q4 from "./Q4";
+import Q5 from "./Q5";
+import Q6 from "./Q6";
+import Q7 from "./Q7";
+import Q8 from "./Q8";
+import Q9 from "./Q9";
+import Q10 from "./Q10";
+import Q11 from "./Q11";
+import Q12 from "./Q12";
 
 const Questions = () => {
   const [step, setStep] = useState(1);
+
+  const [type, setType] = useState({
+    typeA: null,
+    typeB: null,
+    typeC: null,
+    typeD: null,
+  });
 
   const [questions, setQuestions] = useState([
     {
@@ -84,6 +101,10 @@ const Questions = () => {
     setStep(step + 1);
   };
 
+  const finishStep = () => {
+    //let sumA = questions[0].checkedVal
+  };
+
   const inputChange = (e) => {
     let eTargetName = parseInt(e.target.name, 10);
     let qts = questions;
@@ -116,6 +137,96 @@ const Questions = () => {
           step={step}
           nextStep={nextStep}
           question={questions[1]}
+          inputChange={inputChange}
+        />
+      );
+    case 3:
+      return (
+        <Q3
+          step={step}
+          nextStep={nextStep}
+          question={questions[2]}
+          inputChange={inputChange}
+        />
+      );
+    case 4:
+      return (
+        <Q4
+          step={step}
+          nextStep={nextStep}
+          question={questions[3]}
+          inputChange={inputChange}
+        />
+      );
+    case 5:
+      return (
+        <Q5
+          step={step}
+          nextStep={nextStep}
+          question={questions[4]}
+          inputChange={inputChange}
+        />
+      );
+    case 6:
+      return (
+        <Q6
+          step={step}
+          nextStep={nextStep}
+          question={questions[5]}
+          inputChange={inputChange}
+        />
+      );
+    case 7:
+      return (
+        <Q7
+          step={step}
+          nextStep={nextStep}
+          question={questions[6]}
+          inputChange={inputChange}
+        />
+      );
+    case 8:
+      return (
+        <Q8
+          step={step}
+          nextStep={nextStep}
+          question={questions[7]}
+          inputChange={inputChange}
+        />
+      );
+    case 9:
+      return (
+        <Q9
+          step={step}
+          nextStep={nextStep}
+          question={questions[8]}
+          inputChange={inputChange}
+        />
+      );
+    case 10:
+      return (
+        <Q10
+          step={step}
+          nextStep={nextStep}
+          question={questions[9]}
+          inputChange={inputChange}
+        />
+      );
+    case 11:
+      return (
+        <Q11
+          step={step}
+          nextStep={nextStep}
+          question={questions[10]}
+          inputChange={inputChange}
+        />
+      );
+    case 12:
+      return (
+        <Q12
+          step={step}
+          nextStep={finishStep}
+          question={questions[11]}
           inputChange={inputChange}
         />
       );
