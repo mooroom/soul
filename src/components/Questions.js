@@ -16,12 +16,7 @@ import Result from "./Result";
 const Questions = () => {
   const [step, setStep] = useState(1);
 
-  const [type, setType] = useState({
-    typeA: null,
-    typeB: null,
-    typeC: null,
-    typeD: null,
-  });
+  const [type, setType] = useState([]);
 
   const [questions, setQuestions] = useState([
     {
@@ -126,11 +121,29 @@ const Questions = () => {
     for (let i = 9; i < 12; i++) {
       sumD += checkedArray[i];
     }
-
     console.log(sumA);
     console.log(sumB);
     console.log(sumC);
     console.log(sumD);
+
+    let typesArray = [];
+
+    const decideType = (sumX, X) => {
+      if (sumX >= 9) {
+        typesArray.push(X);
+      } else {
+        typesArray.push(`n${X}`);
+      }
+    };
+
+    decideType(sumA, "A");
+    decideType(sumB, "B");
+    decideType(sumC, "C");
+    decideType(sumD, "D");
+
+    // 걍 setType 안하고 typesArray 채로 연산해서 firestore 에 넘겨줘도 될듯
+    setType(typesArray);
+    console.log(type);
   };
 
   const inputChange = (e) => {
@@ -259,7 +272,7 @@ const Questions = () => {
         />
       );
     case 13:
-      return <Result />;
+      return <Result type={type} />;
     default:
       return;
   }
