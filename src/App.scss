@@ -49,3 +49,32 @@
 .purple {
   background: #5a4d8a;
 }
+
+.todayBox {
+  width: 100vw;
+  padding: 17px 30px;
+  background-color: rgba(255, 255, 255, 0.5);
+  h6 {
+    margin-bottom: 12px;
+  }
+}
+
+.soulCard {
+  width: 100%;
+  background-color: white;
+  border-radius: 15px;
+  padding: 12px 15px;
+  color: black;
+  display: flex;
+  p {
+    margin: 0;
+    font-size: 0.8rem;
+  }
+  .imgSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+  }
+}
