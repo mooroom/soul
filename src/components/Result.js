@@ -80,11 +80,157 @@ const Result = ({ type }) => {
   const { currentUser } = useContext(AuthContext);
 
   const onClick = () => {
-    console.log(currentUser.uid);
+    //console.log(currentUser.uid);
+
+    const makeE = (X) => {
+      switch (X) {
+        case "A":
+          return {
+            eid: "A",
+            title: "방황하는 이벤트1",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "nA":
+          return {
+            eid: "nA",
+            title: "방황하는 이벤트2",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "B":
+          return {
+            eid: "B",
+            title: "방황하는 이벤트3",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "nB":
+          return {
+            eid: "nB",
+            title: "방황하는 이벤트4",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "C":
+          return {
+            eid: "C",
+            title: "방황하는 이벤트5",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "nC":
+          return {
+            eid: "nC",
+            title: "방황하는 이벤트6",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "D":
+          return {
+            eid: "D",
+            title: "방황하는 이벤트7",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "nD":
+          return {
+            eid: "nD",
+            title: "방황하는 이벤트8",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        default:
+          return;
+      }
+    };
+
+    const makeC = (X) => {
+      switch (X) {
+        case "A":
+          return {
+            eid: "A",
+            title: "방황하는 컨텐츠1",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "nA":
+          return {
+            eid: "nA",
+            title: "방황하는 컨텐츠2",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "B":
+          return {
+            eid: "B",
+            title: "방황하는 컨텐츠3",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "nB":
+          return {
+            eid: "nB",
+            title: "방황하는 컨텐츠4",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "C":
+          return {
+            eid: "C",
+            title: "방황하는 컨텐츠5",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "nC":
+          return {
+            eid: "nC",
+            title: "방황하는 컨텐츠6",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "D":
+          return {
+            eid: "D",
+            title: "방황하는 컨텐츠7",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        case "nD":
+          return {
+            eid: "nD",
+            title: "방황하는 컨텐츠8",
+            imgURL: "#",
+            hashTag: "#오프라인#소설#예술",
+            date: "2020.06.20",
+          };
+        default:
+          return;
+      }
+    };
+
+    const myEvents = type.map(makeE);
+    const myContents = type.map(makeC);
+
     firestore
       .collection("user")
       .doc(`${currentUser.uid}`)
-      .update({ myType: myType });
+      .update({ myType: myType, myEvents: myEvents, myContents: myContents });
   };
   return (
     <div>

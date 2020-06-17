@@ -5,6 +5,7 @@ import Menu from "./components/Menu";
 import "./App.scss";
 import logo from "./img/logo.svg";
 import Slider from "infinite-react-carousel";
+import SoulCard from "./components/SoulCard";
 
 const Home = () => {
   var firestore = useFirestore();
@@ -15,6 +16,8 @@ const Home = () => {
   var userDoc = firestore.collection("user").doc(uid);
 
   const name = useFirestoreDocData(userDoc).uName;
+  const events = useFirestoreDocData(userDoc).myEvents;
+  const contents = useFirestoreDocData(userDoc).myContents;
 
   const settings = {
     arrows: false,
@@ -30,18 +33,28 @@ const Home = () => {
         <h5>오늘도 잘 버티고 계신가요?</h5>
 
         <div className="todayBox">
+          <h6>{name}을 위한 오늘의 추천 이벤트</h6>
+          {events.map((event) => (
+            <SoulCard
+              key={event.eid}
+              img={event.imgURL}
+              hashTag={event.hashTag}
+              title={event.title}
+              date={event.date}
+            />
+          ))}
+        </div>
+        <div className="todayBox">
           <h6>{name}을 위한 오늘의 추천 컨텐츠</h6>
-
-          <div className="soulCard">
-            <div className="imgSection">
-              <img src={logo} width="50px" />
-            </div>
-            <div className="txtSection">
-              <p>#에세이#새벽#사랑</p>
-              <p>사람을 대하는 가장 적정한 온도, [나의 친애하는 적] 허지웅</p>
-              <p>2020.06.20</p>
-            </div>
-          </div>
+          {contents.map((content) => (
+            <SoulCard
+              key={content.eid}
+              img={content.imgURL}
+              hashTag={content.hashTag}
+              title={content.title}
+              date={content.date}
+            />
+          ))}
         </div>
       </div>
     </>
