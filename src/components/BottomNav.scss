@@ -1,0 +1,16 @@
+#navBox {
+  background-color: #1a2841;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 10px;
+  width: 100%;
+  box-shadow: 0px -5px 15px 2px rgba(0, 0, 0, 0.3);
+
+  img {
+    width: 25px;
+  }
+}

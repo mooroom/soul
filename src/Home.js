@@ -6,6 +6,7 @@ import "./App.scss";
 import logo from "./img/logo.svg";
 import Slider from "infinite-react-carousel";
 import SoulCard from "./components/SoulCard";
+import BottomNav from "./components/BottomNav";
 
 const Home = () => {
   var firestore = useFirestore();
@@ -27,6 +28,7 @@ const Home = () => {
   return (
     <>
       <Menu name={name} />
+      <BottomNav />
       <div className="container">
         <img className="mb-3" src={logo} width="70px" />
         <h5>{name}님,</h5>
