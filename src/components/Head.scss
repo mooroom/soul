@@ -1,0 +1,21 @@
+#headerBox {
+  background-color: #1a2841;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px;
+  width: 100%;
+
+  #title {
+    font-size: 20px;
+  }
+
+  #ghost {
+    background-color: #1a2841;
+    width: 9px;
+    height: 17.98px;
+  }
+}

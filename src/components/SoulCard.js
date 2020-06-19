@@ -1,10 +1,11 @@
 import React from "react";
+import cardItem from "../img/cardItem.svg";
 
 const SoulCard = ({ img, hashTag, title, date }) => {
   return (
     <div className="soulCard">
       <div className="imgSection">
-        <img src={img} width="50px" />
+        <img src={cardItem} width="50px" />
       </div>
       <div className="txtSection">
         <p>{hashTag}</p>

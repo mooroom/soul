@@ -1,0 +1,21 @@
+#profileCard {
+  width: 100%;
+  background-color: white;
+  padding: 25px 30px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  #imgSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100px;
+    }
+  }
+  #txtSection {
+    text-align: center;
+    padding-right: 50px;
+  }
+}

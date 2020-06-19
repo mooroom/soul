@@ -7,6 +7,7 @@ import logo from "./img/logo.svg";
 import Slider from "infinite-react-carousel";
 import SoulCard from "./components/SoulCard";
 import BottomNav from "./components/BottomNav";
+import Carousel from "react-bootstrap/Carousel";
 
 const Home = () => {
   var firestore = useFirestore();
@@ -29,6 +30,21 @@ const Home = () => {
     <>
       <Menu name={name} />
       <BottomNav />
+
+      <Carousel indicators={false} className="todayBox">
+        {events.map((event) => (
+          <Carousel.Item>
+            <SoulCard
+              key={event.eid}
+              img={event.imgURL}
+              hashTag={event.hashTag}
+              title={event.title}
+              date={event.date}
+            />
+          </Carousel.Item>
+        ))}
+      </Carousel>
+
       <div className="container">
         <img className="mb-3" src={logo} width="70px" />
         <h5>{name}님,</h5>

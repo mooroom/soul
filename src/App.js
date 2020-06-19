@@ -12,6 +12,8 @@ import PrivateRoute from "./PrivateRoute";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import { SuspenseWithPerf } from "reactfire";
+import My from "./My";
+import Write from "./Write";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -34,6 +36,8 @@ function App() {
             <Route exact path="/start" component={Start} />
             <Route exact path="/welcome" component={Welcome} />
             <Route exact path="/test" component={Test} />
+            <PrivateRoute exact path="/my" component={My} />
+            <Route exact path="/write" component={Write} />
           </Switch>
         </Router>
       </AuthProvider>
