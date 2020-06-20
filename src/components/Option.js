@@ -1,20 +1,20 @@
 import React from "react";
+import "./Option.scss";
 
 const Option = ({ qid, id, value, inputChange }) => {
   return (
-    <div className="form-check form-check-inline">
-      <input
-        className="form-check-input"
-        type="checkbox"
-        id={id}
-        value={value}
-        onClick={inputChange}
-        name={qid}
-      />
-      <label className="form-check-label" htmlFor={id}>
-        {value}
+    <>
+      <label className="radio-container">
+        <input
+          type="checkbox"
+          id={id}
+          value={value}
+          onClick={inputChange}
+          name={qid}
+        />
+        <span className="checkmark"></span>
       </label>
-    </div>
+    </>
   );
 };
 

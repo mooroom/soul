@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import { useFirestore, useAuth } from "reactfire";
+import logo from "./img/logo.svg";
 
 const SignUp = ({ history }) => {
   const auth = useAuth();
@@ -22,7 +23,7 @@ const SignUp = ({ history }) => {
               uEmail: `${email.value}`,
             });
         });
-        history.push("/welcome");
+        history.push("/start");
       } catch (error) {
         alert(error);
       }
@@ -31,23 +32,28 @@ const SignUp = ({ history }) => {
   );
 
   return (
-    <div>
-      <h1>Sign up</h1>
-      <form onSubmit={handleSignUp}>
-        <label>
-          Email
-          <input name="email" type="email" placeholder="Email" />
-        </label>
-        <label>
-          Password
-          <input name="password" type="password" placeholder="Password" />
-        </label>
-        <label>
-          name
-          <input name="name" type="name" placeholder="Name" />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
+    <div className="container">
+      <div id="logoBox">
+        <img src={logo} width="50px" />
+      </div>
+      <div id="loginBox">
+        <div className="f-20 f-b mb-5">회원가입</div>
+        <form onSubmit={handleSignUp}>
+          <div>
+            <input name="email" type="email" placeholder="Email" />
+          </div>
+          <div>
+            <input name="password" type="password" placeholder="Password" />
+          </div>
+          <div>
+            <input name="name" type="name" placeholder="Nickname" />
+          </div>
+
+          <button className="soul-btn mt-1 mb-5" type="submit">
+            가입하기
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

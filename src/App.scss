@@ -16,6 +16,33 @@ $soul-blue: #1a2841;
   background-color: $soul-blue;
 }
 
+.soul-btn {
+  background-color: $soul-red;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border-style: unset;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+.soul-btn-blue {
+  background-color: $soul-blue;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border-style: unset;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.f-b {
+  font-weight: bold;
+}
+
 .f-20 {
   font-size: 20px;
 }
@@ -84,12 +111,24 @@ $soul-blue: #1a2841;
 
 .container {
   height: 100vh;
+  width: 100vw;
+  text-align: center;
+}
+
+.container-flex {
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
   padding: 0 20px;
+
+  &.white {
+    background-color: white;
+    color: $soul-blue;
+  }
 }
 
 .purple {
@@ -100,9 +139,15 @@ $soul-blue: #1a2841;
   width: 100vw;
   padding: 17px 20px;
   background-color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 50px;
   h6 {
     margin-bottom: 12px;
   }
+}
+
+.carousel-inner {
+  height: 81px;
+  padding: 0 5px;
 }
 
 .soulCard {
@@ -132,6 +177,47 @@ $soul-blue: #1a2841;
   overflow: scroll;
 }
 
+//Login.js
+#logoBox {
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#loginBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  color: $soul-blue;
+  text-align: center;
+  padding: 50px 20px;
+  border-radius: 30px 30px 0px 0px;
+  form {
+    width: 100%;
+    div {
+      width: 100%;
+      input {
+        width: 100%;
+        border-radius: 15px;
+        border-style: unset;
+        padding: 12px;
+        background-color: $soul-blue;
+        margin-bottom: 15px;
+        color: white;
+      }
+    }
+  }
+}
+
 //Write.js
 #addEmotionBox {
   background-color: rgba(0, 0, 0, 0.5);
@@ -153,7 +239,37 @@ $soul-blue: #1a2841;
   align-items: center;
 }
 
-.carousel-inner {
-  height: 81px;
-  padding: 0 5px;
+//Ouestions
+.QuestionBox {
+  width: 85%;
+  .question {
+    text-align: left;
+    height: 100px;
+    background-color: rgb(233, 233, 233);
+    padding: 15px;
+    color: black;
+    border-radius: 10px;
+  }
+}
+
+.radioBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+}
+
+.progress {
+  height: 0.5rem !important;
+}
+
+.progress-bar {
+  background-color: $soul-red !important;
+}
+
+.degreeBox {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(0, 0, 0, 0.5);
 }

@@ -3,6 +3,7 @@ import { withRouter, Redirect } from "react-router";
 import { AuthContext } from "./Auth.js";
 import { useAuth } from "reactfire";
 import { Link } from "react-router-dom";
+import logo from "./img/logo.svg";
 
 const Login = ({ history }) => {
   const auth = useAuth();
@@ -28,22 +29,29 @@ const Login = ({ history }) => {
   }
 
   return (
-    <div>
-      <h1>Log in</h1>
-      <form onSubmit={handleLogin}>
-        <label>
-          Email
-          <input name="email" type="email" placeholder="Email" />
-        </label>
-        <label>
-          Password
-          <input name="password" type="password" placeholder="Password" />
-        </label>
-        <button type="submit">Log in</button>
-      </form>
-      <Link to="/signup">
-        <button type="button">Sign Up</button>
-      </Link>
+    <div className="container">
+      <div id="logoBox">
+        <img src={logo} width="50px" />
+      </div>
+      <div id="loginBox">
+        <div className="f-20 f-b mb-5">로그인</div>
+        <form onSubmit={handleLogin}>
+          <div>
+            <input name="email" type="email" placeholder="Email" />
+          </div>
+          <div>
+            <input name="password" type="password" placeholder="Password" />
+          </div>
+          <div>
+            <button className="soul-btn mt-1 mb-5" type="submit">
+              로그인
+            </button>
+          </div>
+        </form>
+        <Link to="/signup">
+          <button className="btn">회원가입</button>
+        </Link>
+      </div>
     </div>
   );
 };

@@ -74,6 +74,7 @@ const Result = ({ type }) => {
       myType = "16번타입";
       myTypeDetail = "16번타입니다.";
       break;
+    default:
   }
 
   const firestore = useFirestore();

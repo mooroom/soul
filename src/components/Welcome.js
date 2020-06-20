@@ -4,13 +4,7 @@ import shapes from "../img/shapes.png";
 
 const Welcome = () => {
   return (
-    <div className="container">
-      <img
-        src={shapes}
-        width="236"
-        alt="logo"
-        style={{ marginBottom: "75px" }}
-      />
+    <div className="container-flex white">
       <h3 style={{ marginBottom: "30px" }}>환영합니다!</h3>
       <div style={{ width: "280px", fontSize: ".85rem", marginBottom: "40px" }}>
         <p>
@@ -24,7 +18,7 @@ const Welcome = () => {
         </p>
       </div>
       <Link to="/test">
-        <button type="button" className="btn btn-light">
+        <button type="button" className="soul-btn-blue">
           테스트하기
         </button>
       </Link>
