@@ -31,9 +31,7 @@ const Menu = ({ name }) => {
         <div id="infoBox2">
           <h6>연계기관 보기</h6>
           <h6 className="mb-5">고객센터</h6>
-          <button className="btn btn-light" onClick={() => auth.signOut()}>
-            로그아웃
-          </button>
+          <h6 onClick={() => auth.signOut()}>로그아웃</h6>
         </div>
       </div>
       <div

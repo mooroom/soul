@@ -87,7 +87,7 @@ const Questions = () => {
     },
     {
       id: 12,
-      title: "나는 우울할 때 일부러 사람을 만나는 편이다.",
+      title: "나는 내 이야기를 다른 사람에게 하는 것을 좋아한다.",
       checkedVal: "",
       render: false,
     },

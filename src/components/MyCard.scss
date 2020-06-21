@@ -3,7 +3,7 @@ $soul-blue: #1a2841;
   height: 70%;
   background-color: $soul-blue;
   position: fixed;
-  z-index: 100;
+  z-index: 105;
   overflow: auto;
   bottom: -70%;
   left: 0;
@@ -22,6 +22,9 @@ $soul-blue: #1a2841;
   #myCardTitle {
     position: fixed;
     top: 23%;
+  }
+  .myCardCon {
+    width: 100%;
   }
 }
 

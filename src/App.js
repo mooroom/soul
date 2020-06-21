@@ -14,12 +14,18 @@ import SignUp from "./SignUp";
 import { SuspenseWithPerf } from "reactfire";
 import My from "./My";
 import Write from "./Write";
+import Events from "./Events";
+import Contents from "./Contents";
 
 const GlobalStyle = createGlobalStyle`
   body {
     background: #1a2841;
     height: 100vh;
     color: white;
+    -ms-overflow-style: none;
+  }
+  body::-webkit-scrollbar {
+    display: none
   }
 `;
 
@@ -38,6 +44,8 @@ function App() {
             <Route exact path="/test" component={Test} />
             <PrivateRoute exact path="/my" component={My} />
             <Route exact path="/write" component={Write} />
+            <Route exact path="/events/:eid" component={Events} />
+            <Route exact path="/contents/:eid" component={Contents} />
           </Switch>
         </Router>
       </AuthProvider>

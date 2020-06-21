@@ -18,6 +18,8 @@ const My = () => {
 
   const name = useFirestoreDocData(userDoc).uName;
   const type = useFirestoreDocData(userDoc).myType;
+  const events = useFirestoreDocData(userDoc).myEvents;
+  const contents = useFirestoreDocData(userDoc).myContents;
 
   const [activeEvent, setActiveEvent] = useState(false);
   const onToggleEvent = () => {
@@ -34,15 +36,15 @@ const My = () => {
         <ProfileCard profile={profile} name={name} type={type} />
         <div id="btnBox">
           <Link to="/test">
-            <button className="btn soul-red">테스트 다시하기</button>
+            <button className="soul-btn">테스트 다시하기</button>
           </Link>
         </div>
         <div className="listBox">
           <div className="listItem" onClick={onToggleEvent}>
-            나의 이벤트
+            나의 추천 이벤트
           </div>
           <div className="listItem" onClick={onToggleContents}>
-            내가 좋아한 컨텐츠
+            나의 추천 컨텐츠
           </div>
           <div className="listItem" onClick={() => auth.signOut()}>
             로그아웃
@@ -52,12 +54,16 @@ const My = () => {
       <MyCard
         active={activeEvent}
         onToggle={onToggleEvent}
-        title="나의 이벤트"
+        recommended={events}
+        title="나의 추천 이벤트"
+        url="events"
       />
       <MyCard
         active={activeContents}
         onToggle={onToggleContents}
-        title="내가 좋아한 컨텐츠"
+        recommended={contents}
+        title="나의 추천 컨텐츠"
+        url="contents"
       />
     </div>
   );
