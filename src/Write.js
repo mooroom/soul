@@ -22,14 +22,25 @@ const Write = () => {
     setActive(!active);
   };
 
-  const handleArchive = () => {};
-
   const today = new Date();
   const dateString = today.toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
+
+  const [inputs, setInputs] = useState({
+    text: "",
+  });
+  const { text } = inputs;
+  const onChange = (e) => {
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
   return (
     <div>
       <Head title="데일리 아카이브" />
@@ -56,11 +67,14 @@ const Write = () => {
         <div id="diaryCard">
           <div className="f-14 black text-center mb-3">{dateString}</div>
           <button onClick={handleActive}>x</button>
-          <form onSubmit={handleArchive} className="text-center">
+          <form className="text-center">
             <textarea
               className="form-control mb-2"
               placeholder="텍스트를 입력하세요"
               rows="3"
+              name="text"
+              onChange={onChange}
+              value={text}
             ></textarea>
             <button className="soul-btn-blue" type="submit">
               등록
