@@ -12,6 +12,14 @@ $soul-blue: #1a2841;
   }
 }
 
+.black {
+  color: black;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .soul-blue {
   background-color: $soul-blue;
 }
@@ -257,14 +265,31 @@ $soul-blue: #1a2841;
 }
 
 #writeBox {
-  background-color: #001028;
-  padding: 50px 20px 0 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
-  z-index: 100;
-  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 106;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding: 0 20px;
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  #diaryCard {
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+  }
 }
 
 //Ouestions
