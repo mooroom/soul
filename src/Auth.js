@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "reactfire";
+import Spinner from "react-bootstrap/Spinner";
 
 export const AuthContext = React.createContext();
 
@@ -16,7 +17,11 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   if (pending) {
-    return <>Loading...</>;
+    return (
+      <div className="spinnerBox">
+        <Spinner animation="border" variant="danger" />
+      </div>
+    );
   }
 
   return (

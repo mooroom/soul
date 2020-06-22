@@ -1,6 +1,15 @@
 $soul-red: #ea6568;
 $soul-blue: #1a2841;
 
+.spinnerBox {
+  width: 100vw;
+  height: 100vh;
+  background-color: $soul-blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .soul-red {
   background-color: $soul-red;
   color: white;
@@ -317,20 +326,9 @@ a:hover {
     #diaryCardSub {
       background-color: white;
       border-radius: 20px;
-      padding: 15px;
+      padding: 15px 20px;
     }
-    #diaryCardHeader {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-      button {
-        position: absolute;
-        top: 0;
-        right: 0;
-      }
-    }
+
     #diaryForm {
       width: 100%;
       display: flex;
@@ -338,6 +336,18 @@ a:hover {
       align-items: center;
     }
   }
+}
+
+#diaryCardHeader {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.closeBtn {
+  float: right;
+  color: #b9b9b9;
 }
 
 .inputfile {
@@ -369,11 +379,31 @@ a:hover {
   justify-content: space-around;
   align-items: center;
   padding: 0 10px;
-  .colorItem {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-  }
+}
+
+.colorItem {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+#archiveBox {
+  width: 100%;
+  padding: 20px;
+}
+
+#archiveBoxSub {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.titleBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .d-white {

@@ -10,8 +10,9 @@ import ProfileCard from "./ProfileCard";
 import profile from "./img/profile.svg";
 import addBtn from "./img/add.svg";
 import Carousel from "react-bootstrap/Carousel";
+import archiveImg from "./img/archive_1.png";
 
-const Write = () => {
+const Write = ({ history }) => {
   var firestore = useFirestore();
   var auth = useAuth();
   var storage = useStorage();
@@ -58,7 +59,6 @@ const Write = () => {
   const [url, setUrl] = useState("");
 
   const handleFileChange = (e) => {
-    e.preventDefault();
     let reader = new FileReader();
 
     reader.onloadend = () => {
@@ -75,7 +75,11 @@ const Write = () => {
     }
   };
 
-  const handleUpload = () => {
+  //d-color 설정
+  const [dColor, setDColor] = useState("");
+
+  const handleUpload = (e) => {
+    e.preventDefault();
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
@@ -93,10 +97,15 @@ const Write = () => {
           });
       }
     );
+
+    console.log(dateString);
   };
 
-  //d-color 설정
-  const [dColor, setDColor] = useState("");
+  const onSubmit = () => {
+    userDoc.set({
+      storedEvent: text,
+    });
+  };
 
   return (
     <div>
@@ -112,29 +121,35 @@ const Write = () => {
             alt="addBtn"
           />
         </div>
-        <Carousel indicators={false} className="mt-5">
-          <Carousel.Item>
-            <h1>Hello</h1>
-          </Carousel.Item>
-          <Carousel.Item>
-            <h1>Heloo</h1>
-          </Carousel.Item>
-          <Carousel.Item>
-            <h1>Heloo</h1>
-          </Carousel.Item>
-        </Carousel>
+        <div id="archiveBox">
+          <div id="archiveBoxSub">
+            <div className="f-14 mb-2">{dateString}</div>
+            <div className="titleBox mb-3">
+              <div className="colorItem d-yellow mr-2"></div>
+              <div className="f-18">밤새워 과제를 했다.</div>
+            </div>
+            <div className="f-16 mb-4">
+              밤새워 과제를 했다. 해가 뜨는 걸 봤는데 허무하고 화나던 여느때와
+              다르게 기분이 좋았다. 아침에 잠이 드는 건 힘들지만 이유가 있는
+              밤이 그렇지 않은 날보다는 편안하다. 유난히 긴 밤들은 해가 그렇게
+              반갑던데 그보단 그래도 해가 밉더라도 안 아픈 날이 낫지. 하는
+              생각을 했다.
+            </div>
+            <img src={archiveImg} alt="img" width="100%" />
+          </div>
+        </div>
       </div>
       <div id="writeBox" className={active ? "active" : ""}>
         <div className="f-18 mb-4">오늘의 나는?</div>
         <div id="diaryCard" className={dColor}>
           <div id="diaryCardSub">
-            <div id="diaryCardHeader mb-4">
-              <div className="f-16 black">{dateString}</div>
-              <button onClick={handleActive} className="black f-10">
+            <div id="diaryCardHeader" className="mb-2">
+              <div className="f-16 black d-inline">{dateString}</div>
+              <span className="closeBtn" onClick={handleActive}>
                 닫기
-              </button>
+              </span>
             </div>
-            <form id="diaryForm" onSubmit={handleUpload}>
+            <form id="diaryForm" onSubmit={onSubmit}>
               <textarea
                 className="form-control mb-2"
                 placeholder="텍스트를 입력하세요"
@@ -149,7 +164,10 @@ const Write = () => {
                 className="inputfile"
                 onChange={handleFileChange}
               />
-              <label for="file">사진 업로드</label>
+              <label htmlFor="file">사진 선택</label>
+              {/* <button className="soul-btn" onClick={handleUpload}>
+                업로드
+              </button> */}
               <img src={imgBase64} width="100%" className="mb-3" />
               <div id="colorBox" className="mb-4">
                 <div

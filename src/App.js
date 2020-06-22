@@ -23,10 +23,17 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
     color: white;
     -ms-overflow-style: none;
+
   }
   body::-webkit-scrollbar {
     display: none
   }
+  #element::-webkit-scrollbar {
+    display: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
 `;
 
 function App() {
