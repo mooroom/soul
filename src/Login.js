@@ -35,12 +35,23 @@ const Login = ({ history }) => {
       </div>
       <div id="loginBox">
         <div className="f-20 f-b mb-5">로그인</div>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} autoComplete="off">
           <div>
-            <input name="email" type="email" placeholder="Email" />
+            <input
+              name="email"
+              type="email"
+              placeholder="Email"
+              autoComplete="false"
+              required
+            />
           </div>
           <div>
-            <input name="password" type="password" placeholder="Password" />
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              autoComplete="new-password"
+            />
           </div>
           <div>
             <button className="soul-btn mt-1 mb-5" type="submit">

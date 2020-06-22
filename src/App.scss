@@ -47,6 +47,31 @@ $soul-blue: #1a2841;
   }
 }
 
+//포커스 삭제
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none !important;
+}
+
+textarea {
+  overflow: auto;
+  outline: none !important;
+
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+
+  resize: none; /*remove the resize handle on the bottom right*/
+}
+
+a {
+  text-decoration: none !important;
+}
+a:hover {
+  text-decoration: none !important;
+}
 .f-b {
   font-weight: bold;
 }
@@ -287,9 +312,90 @@ $soul-blue: #1a2841;
   #diaryCard {
     width: 100%;
     background-color: white;
-    border-radius: 20px;
-    padding: 20px;
+    border-radius: 30px;
+    padding: 15px;
+    #diaryCardSub {
+      background-color: white;
+      border-radius: 20px;
+      padding: 15px;
+    }
+    #diaryCardHeader {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      button {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+    #diaryForm {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  display: inline-block;
+  background-color: #858687;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.inputfile + label {
+  cursor: pointer; /* "hand" cursor */
+}
+
+#colorBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 10px;
+  .colorItem {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+}
+
+.d-white {
+  background-color: white !important;
+}
+.d-yellow {
+  background-color: #ece200 !important;
+}
+.d-red {
+  background-color: #e61f5f !important;
+}
+.d-purple {
+  background-color: #3c368a !important;
+}
+.d-blue {
+  background-color: #74c8e3 !important;
+}
+.d-green {
+  background-color: #2baf8a !important;
+}
+.d-black {
+  background-color: #000000 !important;
 }
 
 //Ouestions
