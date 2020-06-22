@@ -90,7 +90,7 @@ const Events = ({ match }) => {
             <div className="f-8 f-b blue mb-3">{event.date}</div>
             <div className="f-14 mb-4">{event.detail}</div>
             <div>
-              <a href={event.link}>
+              <a href={event.link} target="_blank" rel="noopener noreferrer">
                 <button className="soul-btn">참여하기</button>
               </a>
             </div>

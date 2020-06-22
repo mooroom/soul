@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const SoulCard = ({ img, hashTag, title, date }) => {
   return (
     <div className="soulCard">
       <div className="imgSection">
-        <img src={img} />
+        <img src={img} alt="img" />
       </div>
       <div className="txtSection">
         <div className="f-8">{hashTag}</div>

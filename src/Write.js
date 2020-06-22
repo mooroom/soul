@@ -48,7 +48,12 @@ const Write = () => {
         <ProfileCard profile={profile} name={name} type={type} />
         <div id="addEmotionBox" className="mt-4">
           <div className="f-18 mb-4">오늘의 기분을 기록하세요</div>
-          <img src={addBtn} width="35px" onClick={() => handleActive()} />
+          <img
+            src={addBtn}
+            width="35px"
+            onClick={() => handleActive()}
+            alt="addBtn"
+          />
         </div>
         <Carousel indicators={false} className="mt-5">
           <Carousel.Item>

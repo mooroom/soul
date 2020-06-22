@@ -26,8 +26,8 @@ const Home = () => {
     <>
       <Menu name={name} />
       <BottomNav />
-      <div className="container-flex">
-        <img className="mb-3" src={logo} width="70px" />
+      <div className="container-flex mainBox">
+        <img className="mb-3" src={logo} width="70px" alt="logo" />
         <h5>{name}님,</h5>
         <h5 className="mb-5">오늘도 잘 버티고 계신가요?</h5>
         <div className="todayBoxTitle f-16 f-b">
