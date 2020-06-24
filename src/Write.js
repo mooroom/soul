@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Head from "./components/Head";
 import {
   useAuth,
   useFirestoreDocData,
   useFirestore,
   useStorage,
+  useFirebaseApp,
 } from "reactfire";
 import ProfileCard from "./ProfileCard";
 import profile from "./img/profile.svg";
 import addBtn from "./img/add.svg";
 import Carousel from "react-bootstrap/Carousel";
 import archiveImg from "./img/archive_1.png";
+import { withRouter } from "react-router-dom";
+import * as firebase from "firebase";
 
 const Write = ({ history }) => {
   var firestore = useFirestore();
@@ -23,6 +26,7 @@ const Write = ({ history }) => {
 
   const name = useFirestoreDocData(userDoc).uName;
   const type = useFirestoreDocData(userDoc).myType;
+  const myDiary = useFirestoreDocData(userDoc).myDiary;
 
   const [active, setActive] = useState(false);
   const handleActive = () => {
@@ -78,8 +82,7 @@ const Write = ({ history }) => {
   //d-color 설정
   const [dColor, setDColor] = useState("");
 
-  const handleUpload = (e) => {
-    e.preventDefault();
+  const handleUpload = () => {
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
@@ -97,16 +100,32 @@ const Write = ({ history }) => {
           });
       }
     );
-
-    console.log(dateString);
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    userDoc.set({
-      storedEvent: text,
+  const handleDiaryData = (txt, color) => {
+    userDoc.update({
+      myDiary: firebase.firestore.FieldValue.arrayUnion({
+        date: dateString,
+        txt: txt,
+        // img: url,
+        color: color,
+      }),
     });
   };
+
+  const onSubmit = useCallback(
+    async (event) => {
+      event.preventDefault();
+      const { text, color } = event.target.elements;
+      try {
+        await handleDiaryData(text.value, color.value);
+        history.push("/write");
+      } catch (error) {
+        alert(error);
+      }
+    },
+    [history]
+  );
 
   return (
     <div>
@@ -122,23 +141,27 @@ const Write = ({ history }) => {
             alt="addBtn"
           />
         </div>
-        <div id="archiveBox">
-          <div id="archiveBoxSub">
-            <div className="f-14 mb-2">{dateString}</div>
-            <div className="titleBox mb-3">
-              <div className="colorItem d-yellow mr-2"></div>
-              <div className="f-18">밤새워 과제를 했다.</div>
-            </div>
-            <div className="f-16 mb-4">
-              밤새워 과제를 했다. 해가 뜨는 걸 봤는데 허무하고 화나던 여느때와
-              다르게 기분이 좋았다. 아침에 잠이 드는 건 힘들지만 이유가 있는
-              밤이 그렇지 않은 날보다는 편안하다. 유난히 긴 밤들은 해가 그렇게
-              반갑던데 그보단 그래도 해가 밉더라도 안 아픈 날이 낫지. 하는
-              생각을 했다.
-            </div>
-            <img src={archiveImg} alt="img" width="100%" />
-          </div>
-        </div>
+        <div className="f-14 f-b mt-4 text-center">그간의 날들 돌아보기</div>
+        <Carousel id="archiveBox" indicators={false} controls={false}>
+          {myDiary[0]
+            ? myDiary.map((diary) => (
+                <Carousel.Item>
+                  <div
+                    id="archiveBoxSub"
+                    className={
+                      diary.color
+                        ? `colorItem d-yellow mr-2 ${diary.color}`
+                        : "colorItem d-yellow mr-2"
+                    }
+                  >
+                    <div className="f-14 mb-2 f-b">{diary.date}</div>
+                    <div className="titleBox mb-3"></div>
+                    <div className="f-16 mb-4">{diary.txt}</div>
+                  </div>
+                </Carousel.Item>
+              ))
+            : null}
+        </Carousel>
       </div>
       <div id="writeBox" className={active ? "active" : ""}>
         <div className="f-18 mb-4">오늘의 나는?</div>
@@ -150,15 +173,15 @@ const Write = ({ history }) => {
                 닫기
               </span>
             </div>
-            <div id="diaryForm">
+            <form id="diaryForm" onSubmit={onSubmit}>
               <textarea
+                name="text"
+                type="text"
                 className="form-control mb-2"
                 placeholder="텍스트를 입력하세요"
                 rows="5"
-                onChange={handleTextChange}
-                value={text}
               ></textarea>
-              <input
+              {/* <input
                 type="file"
                 name="file"
                 id="file"
@@ -166,10 +189,7 @@ const Write = ({ history }) => {
                 onChange={handleFileChange}
               />
               <label htmlFor="file">사진 선택</label>
-              {/* <button className="soul-btn" onClick={handleUpload}>
-                업로드
-              </button> */}
-              <img src={imgBase64} width="100%" className="mb-3" />
+              <img src={imgBase64} width="100%" className="mb-3" /> */}
               <div id="colorBox" className="mb-4">
                 <div
                   className="colorItem d-yellow"
@@ -201,9 +221,16 @@ const Write = ({ history }) => {
                   name="black"
                   onClick={() => setDColor("d-black")}
                 ></div>
+                <input type="hidden" name="color" value={dColor} />
               </div>
-              <button className="soul-btn-blue">등록</button>
-            </div>
+              <button
+                className="soul-btn-blue"
+                type="submit"
+                onClick={handleActive}
+              >
+                등록
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -211,4 +238,4 @@ const Write = ({ history }) => {
   );
 };
 
-export default Write;
+export default withRouter(Write);

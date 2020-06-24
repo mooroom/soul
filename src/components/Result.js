@@ -326,7 +326,12 @@ const Result = ({ type }) => {
   firestore
     .collection("user")
     .doc(`${currentUser.uid}`)
-    .update({ myType: myType, myEvents: myEvents, myContents: myContents });
+    .update({
+      myType: myType,
+      myEvents: myEvents,
+      myContents: myContents,
+      myDiary: [],
+    });
 
   const onClick = () => {
     //console.log(currentUser.uid);

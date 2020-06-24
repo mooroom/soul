@@ -6,7 +6,7 @@ import "./Head.scss";
 const Head = ({ title, history }) => {
   return (
     <div id="headerBox">
-      <img src={goBackBtn} width="9px" onClick={() => history.goBack()} />
+      <img src={goBackBtn} width="9px" onClick={() => history.push("/")} />
       <span id="title">{title}</span>
       <span id="ghost" />
     </div>
