@@ -101,7 +101,8 @@ const Write = ({ history }) => {
     console.log(dateString);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     userDoc.set({
       storedEvent: text,
     });
@@ -149,7 +150,7 @@ const Write = ({ history }) => {
                 닫기
               </span>
             </div>
-            <form id="diaryForm" onSubmit={onSubmit}>
+            <div id="diaryForm">
               <textarea
                 className="form-control mb-2"
                 placeholder="텍스트를 입력하세요"
@@ -201,10 +202,8 @@ const Write = ({ history }) => {
                   onClick={() => setDColor("d-black")}
                 ></div>
               </div>
-              <button className="soul-btn-blue" type="submit">
-                등록
-              </button>
-            </form>
+              <button className="soul-btn-blue">등록</button>
+            </div>
           </div>
         </div>
       </div>
