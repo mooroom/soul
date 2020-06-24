@@ -16,7 +16,7 @@ const Q12 = ({ step, nextStep, question, inputChange }) => {
     <div className="QuestionBox">
       <Progressbar animated now={now} className="mb-3" />
       <div className="f-12 mb-5">{step} / 12</div>
-      <div className="question f-16 mb-5">{question.title}</div>
+      <div className="question f-16 mb-4">{question.title}</div>
       <div className="radioBox mb-1">
         {options.map((option) => (
           <Option

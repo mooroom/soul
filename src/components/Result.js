@@ -335,7 +335,7 @@ const Result = ({ type }) => {
     <div className="resultBox">
       <div className="f-b f-20 mb-5">유형테스트 결과</div>
       <div className="f-b f-22 mb-2">{myType}</div>
-      <div className="result mb-5">{myTypeDetail}</div>
+      <div className="result mb-4">{myTypeDetail}</div>
       <Link to="/">
         <button className="soul-btn">프로필 만들기</button>
       </Link>
