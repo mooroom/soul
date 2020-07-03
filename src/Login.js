@@ -38,6 +38,7 @@ const Login = ({ history }) => {
         <form onSubmit={handleLogin} autoComplete="off">
           <div>
             <input
+              id="emailForm"
               name="email"
               type="email"
               placeholder="Email"
@@ -47,6 +48,7 @@ const Login = ({ history }) => {
           </div>
           <div>
             <input
+              id="passwordForm"
               name="password"
               type="password"
               placeholder="Password"
@@ -54,7 +56,7 @@ const Login = ({ history }) => {
             />
           </div>
           <div>
-            <button className="soul-btn mt-1 mb-5" type="submit">
+            <button className="soul-btn mt-3 mb-5" type="submit">
               로그인
             </button>
           </div>

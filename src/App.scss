@@ -1,6 +1,10 @@
 $soul-red: #ea6568;
 $soul-blue: #1a2841;
 
+a {
+  text-decoration: none !important;
+}
+
 .spinnerBox {
   width: 100vw;
   height: 100vh;
@@ -39,6 +43,7 @@ $soul-blue: #1a2841;
   border-radius: 10px;
   padding: 10px 20px;
   border-style: unset;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
   &:hover {
     color: white;
     text-decoration: none;
@@ -256,6 +261,7 @@ a:hover {
 }
 
 #loginBox {
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -273,6 +279,12 @@ a:hover {
   overflow: auto;
   form {
     width: 100%;
+    #emailForm {
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    }
+    #passwordForm {
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    }
     div {
       width: 100%;
       input {
@@ -550,6 +562,7 @@ a:hover {
   background-color: white;
   color: $soul-blue;
   border-radius: 20px;
+  box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8);
   .blue {
     color: #6482af;
   }

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import "./Menu.scss";
 import profile from "../img/profile.svg";
 import { useFirestore, useAuth, useFirestoreDocData } from "reactfire";
+import { Link } from "react-router-dom";
 
 const Menu = ({ name }) => {
   const [active, setActive] = useState(false);
@@ -36,7 +37,10 @@ const Menu = ({ name }) => {
         </div>
         <div id="infoBox2">
           <h6>연계기관 보기</h6>
-          <h6 className="mb-5">고객센터</h6>
+          <a href="https://instagram.com/soul.for.only?igshid=1nxm7uadujnmz">
+            <h6 className="mb-5">고객센터</h6>
+          </a>
+
           <h6 onClick={() => auth.signOut()}>로그아웃</h6>
         </div>
       </div>

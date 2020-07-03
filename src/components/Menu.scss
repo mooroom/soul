@@ -1,3 +1,15 @@
+a {
+  text-decoration: none !important;
+  color: white !important;
+}
+a:active {
+  color: white !important;
+}
+a[tabindex]:focus {
+  color: white !important;
+  outline: none !important;
+}
+
 #pageWrapper {
   position: absolute;
   top: 0;
