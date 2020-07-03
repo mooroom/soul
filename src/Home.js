@@ -1,10 +1,8 @@
-import React, { useContext, useEffect } from "react";
-import { Redirect } from "react-router";
+import React from "react";
 import { useAuth, useFirestoreDocData, useFirestore } from "reactfire";
 import Menu from "./components/Menu";
 import "./App.scss";
 import logo from "./img/logo.svg";
-import Slider from "infinite-react-carousel";
 import SoulCard from "./SoulCard";
 import BottomNav from "./components/BottomNav";
 import Carousel from "react-bootstrap/Carousel";
@@ -35,10 +33,9 @@ const Home = () => {
         </div>
         <Carousel indicators={false} className="todayBox mb-4" controls={false}>
           {events.map((event) => (
-            <Carousel.Item>
+            <Carousel.Item key={event.eid}>
               <Link to={`events/${event.eid}`}>
                 <SoulCard
-                  key={event.eid}
                   img={event.imgURL}
                   hashTag={event.hashTag}
                   title={event.title}
@@ -53,10 +50,9 @@ const Home = () => {
         </div>
         <Carousel indicators={false} className="todayBox" controls={false}>
           {contents.map((content) => (
-            <Carousel.Item>
+            <Carousel.Item key={content.eid}>
               <Link to={`contents/${content.eid}`}>
                 <SoulCard
-                  key={content.eid}
                   img={content.imgURL}
                   hashTag={content.hashTag}
                   title={content.title}

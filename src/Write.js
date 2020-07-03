@@ -5,13 +5,11 @@ import {
   useFirestoreDocData,
   useFirestore,
   useStorage,
-  useFirebaseApp,
 } from "reactfire";
 import ProfileCard from "./ProfileCard";
 import profile from "./img/profile.svg";
 import addBtn from "./img/add.svg";
 import Carousel from "react-bootstrap/Carousel";
-import archiveImg from "./img/archive_1.png";
 import { withRouter } from "react-router-dom";
 import * as firebase from "firebase";
 
@@ -113,12 +111,18 @@ const Write = ({ history }) => {
     });
   };
 
+  const onChangeText = (e) => {
+    setText(e.target.value);
+  };
+
   const onSubmit = useCallback(
     async (event) => {
       event.preventDefault();
       const { text, color } = event.target.elements;
       try {
         await handleDiaryData(text.value, color.value);
+        setText("");
+        setDColor("");
         history.push("/write");
       } catch (error) {
         alert(error);
@@ -126,6 +130,47 @@ const Write = ({ history }) => {
     },
     [history]
   );
+
+  //colorHistroy Css 설정
+  let colorString = "";
+  let count = 0;
+
+  myDiary.forEach((diary) => {
+    let colorCode = "";
+    switch (diary.color) {
+      case "d-white":
+        colorCode = "#ffffff";
+        break;
+      case "d-yellow":
+        colorCode = "#eee200";
+        break;
+      case "d-red":
+        colorCode = "#e61f5f";
+        break;
+      case "d-purple":
+        colorCode = "#3c368a";
+        break;
+      case "d-blue":
+        colorCode = "#74c8e3";
+        break;
+      case "d-green":
+        colorCode = "#2baf8a";
+        break;
+      case "d-black":
+        colorCode = "#000000";
+        break;
+      default:
+        return;
+    }
+
+    colorString =
+      count !== myDiary.length - 1
+        ? colorString + colorCode + ","
+        : colorString + colorCode;
+    count += 1;
+  });
+
+  let colorCss = { background: `linear-gradient(90deg, ${colorString})` };
 
   return (
     <div>
@@ -142,6 +187,9 @@ const Write = ({ history }) => {
           />
         </div>
         <div className="f-14 f-b mt-4 text-center">그간의 날들 돌아보기</div>
+        <div className="paddingBox mt-4">
+          <div id="colorHistory" style={colorCss}></div>
+        </div>
         <Carousel id="archiveBox" indicators={false} controls={false}>
           {myDiary[0]
             ? myDiary.map((diary) => (
@@ -179,6 +227,8 @@ const Write = ({ history }) => {
                 type="text"
                 className="form-control mb-2"
                 placeholder="텍스트를 입력하세요"
+                onChange={onChangeText}
+                value={text}
                 rows="5"
               ></textarea>
               {/* <input

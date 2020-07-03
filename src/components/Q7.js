@@ -4,11 +4,11 @@ import Progressbar from "react-bootstrap/Progressbar";
 
 const Q7 = ({ step, nextStep, question, inputChange }) => {
   const [options, setOptions] = useState([
-    { id: 1, value: 1, isChecked: false },
-    { id: 2, value: 2, isChecked: false },
-    { id: 3, value: 3, isChecked: false },
-    { id: 4, value: 4, isChecked: false },
-    { id: 5, value: 5, isChecked: false },
+    { id: 1, value: 1 },
+    { id: 2, value: 2 },
+    { id: 3, value: 3 },
+    { id: 4, value: 4 },
+    { id: 5, value: 5 },
   ]);
 
   const now = (step / 12) * 100;

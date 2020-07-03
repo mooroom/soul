@@ -2,14 +2,21 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import "./Menu.scss";
 import profile from "../img/profile.svg";
-import { useAuth } from "reactfire";
+import { useFirestore, useAuth, useFirestoreDocData } from "reactfire";
 
 const Menu = ({ name }) => {
   const [active, setActive] = useState(false);
   const onToggle = () => {
     setActive(!active);
   };
+  var firestore = useFirestore();
   var auth = useAuth();
+
+  var user = auth.currentUser;
+  var uid = user.uid;
+  var userDoc = firestore.collection("user").doc(uid);
+
+  const myDiaryCount = useFirestoreDocData(userDoc).myDiary.length;
 
   return (
     <div>
@@ -25,8 +32,7 @@ const Menu = ({ name }) => {
         </h6>
         <h6 className="mb-5">소울 새내기</h6>
         <div id="infoBox">
-          <h6 className="mb-2">이벤트 참여 6회</h6>
-          <h6>감정기록 15회</h6>
+          <h6>감정기록 {myDiaryCount}회</h6>
         </div>
         <div id="infoBox2">
           <h6>연계기관 보기</h6>

@@ -234,7 +234,7 @@ a:hover {
 }
 
 .mainBox {
-  margin-top: 70px;
+  padding-top: 70px;
   padding-bottom: 75px;
   width: 100vw;
   height: 100vh;
@@ -289,6 +289,11 @@ a:hover {
 }
 
 //Write.js
+.paddingBox {
+  width: 100%;
+  padding: 0px 30px;
+}
+
 #addEmotionBox {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 30px;
@@ -296,6 +301,12 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#colorHistory {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
 }
 
 #writeBox {
@@ -391,11 +402,16 @@ a:hover {
   width: 100%;
   padding: 20px;
   text-align: center;
+  .carousel-inner {
+    padding: 0;
+  }
+  .carousel-item.active {
+    padding: 0px 5px;
+  }
 }
 
 #archiveBoxSub {
-  width: 97%;
-  margin: 0 auto;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 20px;
   border-radius: 20px;

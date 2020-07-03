@@ -6,10 +6,10 @@ const Option = ({ qid, id, value, inputChange }) => {
     <>
       <label className="radio-container">
         <input
-          type="checkbox"
+          type="radio"
           id={id}
           value={value}
-          onClick={inputChange}
+          onChange={inputChange}
           name={qid}
         />
         <span className="checkmark"></span>
