@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth, useFirestoreDocData, useFirestore } from "reactfire";
+import { useAuth, useFirestoreDocData, useFirestore, useUser } from "reactfire";
 import Head from "./components/Head";
 import BottomNav from "./components/BottomNav";
 
@@ -8,9 +8,7 @@ const Contents = ({ match }) => {
   const { eid } = match.params;
   let content;
   var firestore = useFirestore();
-  var auth = useAuth();
-
-  var user = auth.currentUser;
+  var user = useUser();
   var uid = user.uid;
   var userDoc = firestore.collection("user").doc(uid);
 

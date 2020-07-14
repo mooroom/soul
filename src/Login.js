@@ -7,6 +7,8 @@ import logo from "./img/logo.svg";
 
 const Login = ({ history }) => {
   const auth = useAuth();
+  const user = auth.currentUser;
+
   const handleLogin = useCallback(
     async (event) => {
       event.preventDefault();
@@ -21,10 +23,7 @@ const Login = ({ history }) => {
     },
     [history]
   );
-
-  const { currentUser } = useContext(AuthContext);
-
-  if (currentUser) {
+  if (user) {
     return <Redirect to="/" />;
   }
 

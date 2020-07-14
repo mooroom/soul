@@ -3,8 +3,9 @@ import Head from "./components/Head";
 import "./App.scss";
 import "./My.scss";
 import profile from "./img/profile.svg";
-import { useAuth, useFirestoreDocData, useFirestore } from "reactfire";
+import { useAuth, useFirestoreDocData, useFirestore, useUser } from "reactfire";
 import { Link } from "react-router-dom";
+
 import MyCard from "./components/MyCard";
 import ProfileCard from "./ProfileCard";
 
@@ -12,7 +13,7 @@ const My = () => {
   var firestore = useFirestore();
   var auth = useAuth();
 
-  var user = auth.currentUser;
+  var user = useUser();
   var uid = user.uid;
   var userDoc = firestore.collection("user").doc(uid);
 
@@ -29,6 +30,7 @@ const My = () => {
   const onToggleContents = () => {
     setActiveContents(!activeContents);
   };
+
   return (
     <div>
       <Head title="마이페이지" />

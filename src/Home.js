@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth, useFirestoreDocData, useFirestore } from "reactfire";
+import { useAuth, useFirestoreDocData, useFirestore, useUser } from "reactfire";
 import Menu from "./components/Menu";
 import "./App.scss";
 import logo from "./img/logo.svg";
@@ -10,9 +10,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   var firestore = useFirestore();
-  var auth = useAuth();
-
-  var user = auth.currentUser;
+  var user = useUser();
   var uid = user.uid;
   var userDoc = firestore.collection("user").doc(uid);
 

@@ -4,6 +4,7 @@ import {
   useFirestoreDocData,
   useFirestore,
   useFirebaseApp,
+  useUser,
 } from "reactfire";
 import Head from "./components/Head";
 import BottomNav from "./components/BottomNav";
@@ -12,11 +13,8 @@ const Events = ({ match }) => {
   console.log(match.params);
   const { eid } = match.params;
   let event;
-  var firebase = useFirebaseApp();
   var firestore = useFirestore();
-  var auth = useAuth();
-
-  var user = auth.currentUser;
+  var user = useUser();
   var uid = user.uid;
   var userDoc = firestore.collection("user").doc(uid);
 

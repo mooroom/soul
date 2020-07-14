@@ -2,21 +2,19 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import "./Menu.scss";
 import profile from "../img/profile.svg";
-import { useFirestore, useAuth, useFirestoreDocData } from "reactfire";
+import { useFirestore, useAuth, useFirestoreDocData, useUser } from "reactfire";
 import { Link } from "react-router-dom";
 
 const Menu = ({ name }) => {
+  var firestore = useFirestore();
+  var auth = useAuth();
+  var user = useUser();
+  var uid = user.uid;
+  var userDoc = firestore.collection("user").doc(uid);
   const [active, setActive] = useState(false);
   const onToggle = () => {
     setActive(!active);
   };
-  var firestore = useFirestore();
-  var auth = useAuth();
-
-  var user = auth.currentUser;
-  var uid = user.uid;
-  var userDoc = firestore.collection("user").doc(uid);
-
   const myDiaryCount = useFirestoreDocData(userDoc).myDiary.length;
 
   return (
