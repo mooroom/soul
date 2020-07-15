@@ -39,25 +39,25 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   return (
     <SuspenseWithPerf>
-      <AuthProvider>
-        <Router>
-          <GlobalStyle />
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/start" component={Start} />
-            <Route exact path="/welcome" component={Welcome} />
-            <Route exact path="/test" component={Test} />
+      <Router>
+        <GlobalStyle />
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignUp} />
+          <AuthProvider>
             <AuthCheck fallback={<Login />}>
+              <Route exact path="/start" component={Start} />
+              <Route exact path="/welcome" component={Welcome} />
+              <Route exact path="/test" component={Test} />
               <Route exact path="/" component={Home} />
               <Route exact path="/my" component={My} />
               <Route exact path="/write" component={Write} />
               <Route exact path="/events/:eid" component={Events} />
               <Route exact path="/contents/:eid" component={Contents} />
             </AuthCheck>
-          </Switch>
-        </Router>
-      </AuthProvider>
+          </AuthProvider>
+        </Switch>
+      </Router>
     </SuspenseWithPerf>
   );
 }
