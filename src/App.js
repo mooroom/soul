@@ -16,6 +16,7 @@ import My from "./My";
 import Write from "./Write";
 import Events from "./Events";
 import Contents from "./Contents";
+import Privacy from "./Privacy";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -42,6 +43,7 @@ function App() {
       <Router>
         <GlobalStyle />
         <Switch>
+          {/* <Route exact path="/privacy" component={Privacy} /> */}
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <AuthProvider>

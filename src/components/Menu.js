@@ -34,11 +34,27 @@ const Menu = ({ name }) => {
           <h6>감정기록 {myDiaryCount}회</h6>
         </div>
         <div id="infoBox2">
-          <h6>연계기관 보기</h6>
-          <a href="https://instagram.com/soul.for.only?igshid=1nxm7uadujnmz">
-            <h6 className="mb-5">고객센터</h6>
+          <a
+            href="https://blutouch.net/blutouch/touch.asp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h6>연계기관 보기</h6>
           </a>
-
+          <a
+            href="https://instagram.com/soul.for.only?igshid=1nxm7uadujnmz"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h6>고객센터</h6>
+          </a>
+          <a
+            href="https://soul-privacy.web.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h6 className="mb-5">개인정보처리방침</h6>
+          </a>
           <h6 onClick={() => auth.signOut()}>로그아웃</h6>
         </div>
       </div>
